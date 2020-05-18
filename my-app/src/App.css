@@ -1,0 +1,86 @@
+body{
+  background-color: #616161;
+  padding: 10px
+}
+.app-wrapper{
+  display: grid;
+  grid-template-areas:
+          "h h"
+          "n c";
+  margin: 0 auto;
+  grid-template-rows: 90px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+  color: #00D8FF;
+}
+.header{
+    grid-area: h;
+    background-color:#2e2e2e;
+}
+.header img{
+  width: auto;
+  height: 100%;
+}
+.nav{
+  grid-area: n;
+  background-color:#2e2e2e;
+  padding-top: 10px;
+}
+.nav div{
+  padding: 2px 5px 2px 10px;
+}
+.nav div:hover{
+  background-color:#00D8FF ;
+  color: aliceblue;
+}
+.content{
+  display: grid;
+  grid-area: c;
+  grid-template-columns: auto;
+  grid-column-gap: 10px;
+  background-color:#2e2e2e ;
+}
+.content img{
+  max-width: 100%;
+}
+.posts{
+  padding-left: 10px;
+}
+.posts .newPost {
+  display: grid;
+}
+.posts .newPost form{
+  display: grid;
+  grid-template-columns: 75% 15%;
+  grid-column-gap: 10px;
+}
+.posts .newPost form textarea{
+  height: 80px;
+  background-color: #000000;
+  border-color: #1A427D;
+  color: #b3b2ad;
+}
+::-webkit-scrollbar { width: 3px; height: 3px;}
+::-webkit-scrollbar-button {  background-color: #666; }
+::-webkit-scrollbar-track {  background-color: #999;}
+::-webkit-scrollbar-track-piece { background-color: #00D8FF;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
+::-webkit-scrollbar-corner { background-color: #999;}
+::-webkit-resizer { background-color: #666;}
+
+.posts .newPost form button{
+  background-color: #000000;
+  border-color: #1A427D;
+  color: #b3b2ad;
+}
+.posts .newPost form .buttonWrap{
+  align-self: end;
+}
+.UserData{
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 150px auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 40px;
+  padding-left: 10px;
+}
