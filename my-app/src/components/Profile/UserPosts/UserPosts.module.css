@@ -1,0 +1,40 @@
+.posts{
+    padding-left: 10px;
+}
+.posts .newPost {
+    display: grid;
+}
+.posts .newPost form{
+    display: grid;
+    grid-template-columns: 75%;
+    grid-template-rows: 40px 100px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+.posts .newPost form textarea, .posts .newPost form input{
+    background-color: #000000;
+    border: 1px solid #1A427D;
+    color: #b3b2ad;
+    padding: 8px;
+}
+.posts .newPost form textarea{
+    resize: none;
+}
+.posts .newPost form textarea::-webkit-scrollbar { width: 4px; height: 0;}
+.posts .newPost form textarea::-webkit-scrollbar-button {  background-color: #616161; }
+.posts .newPost form textarea::-webkit-scrollbar-track {  background-color: #00D8FF;}
+.posts .newPost form textarea::-webkit-scrollbar-track-piece { background-color: #616161;}
+.posts .newPost form textarea::-webkit-scrollbar-thumb { height: 0; background-color: #00D8FF; border-radius: 3px;}
+.posts .newPost form textarea::-webkit-scrollbar-corner { background-color: #999;}
+.posts .newPost form textarea::-webkit-resizer { background-color: #616161;}
+
+.posts .newPost form button{
+    background-color: #000000;
+    border-color: #1A427D;
+    color: #b3b2ad;
+    margin-left: auto;
+}
+.posts .newPost form .buttonWrap{
+    display: flex;
+    justify-content: end;
+}

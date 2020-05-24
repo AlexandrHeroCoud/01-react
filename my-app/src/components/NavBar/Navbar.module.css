@@ -1,0 +1,19 @@
+.nav{
+    grid-area: n;
+    background-color:#2e2e2e;
+    padding-top: 10px;
+}
+.nav div a{
+    display: block;
+    color: #00D8FF;
+    text-decoration: none;
+    padding: 2px 5px 2px 10px;
+}
+.nav div a:hover::before{
+    content:"cd /";
+    color: red;
+}
+.nav div a.active{
+    background-color:#00D8FF ;
+    color: aliceblue;
+}

@@ -1,0 +1,28 @@
+.userDialogs{
+    display: flex;
+    flex-direction: column;
+    background-color: #2e2e2e;
+}
+.userDialog{
+    display: grid;
+    grid-template-columns: 3fr 10fr;
+    grid-template-rows: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.userDialog .userPrewiev{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userDialog .userPrewiev img{
+    width: 40px;
+    border-radius: 50%;
+}
+.dataUserMessage{
+    padding: 5px;
+}
+.lastMessage{
+    color: #6f6969;
+}

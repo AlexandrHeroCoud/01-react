@@ -1,0 +1,47 @@
+.messageTime{
+    float: right;
+    font-size: 12px;
+    color: rgba(0, 216, 255, 0.87);
+}
+.messagesWindow{
+    display: grid;
+    grid-template-rows: 65% 35%;
+    background-color: #2e2e2e;
+}
+.messageInput{
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.messageInput textarea, .posts .newPost form input{
+    background-color: #000000;
+    border: 1px solid #1A427D;
+    color: #b3b2ad;
+    padding: 8px;
+}
+.messageInput textarea{
+    resize: none;
+}
+.messageInput textarea::-webkit-scrollbar { width: 4px; height: 0;}
+.messageInput textarea::-webkit-scrollbar-button {  background-color: #616161; }
+.messageInput textarea::-webkit-scrollbar-track {  background-color: #00D8FF;}
+.messageInput textarea::-webkit-scrollbar-track-piece { background-color: #616161;}
+.messageInput textarea::-webkit-scrollbar-thumb { height: 0; background-color: #00D8FF; border-radius: 3px;}
+.messageInput textarea::-webkit-scrollbar-corner { background-color: #999;}
+.messageInput textarea::-webkit-resizer { background-color: #616161;}
+
+.messageInput button{
+    background-color: #000000;
+    border-color: #1A427D;
+    color: #b3b2ad;
+    width: 50px;
+    height: 30px;
+}
+.messageInput button:active{
+    color: #999;
+    border-style: inset;
+}
+.buttonWrapper{
+    padding-left: 10px;
+}

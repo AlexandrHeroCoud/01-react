@@ -1,0 +1,22 @@
+body{
+  background-color: #616161;
+  padding: 10px
+}
+.appWrapper{
+  display: grid;
+  grid-template-areas:
+          "h h"
+          "n c";
+  margin: 0 auto;
+  grid-template-rows: 90px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+  color: #00D8FF;
+}
+::-webkit-scrollbar { width: 4px; height: 1px;}
+::-webkit-scrollbar-button {  background-color: #616161; }
+::-webkit-scrollbar-track {  background-color: #00D8FF;}
+::-webkit-scrollbar-track-piece { background-color: #616161;}
+::-webkit-scrollbar-thumb { height: 1px; background-color: #00D8FF; border-radius: 3px;}
+::-webkit-scrollbar-corner { background-color: #999;}
+::-webkit-resizer { background-color: #616161;}
