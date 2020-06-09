@@ -6,8 +6,8 @@ import MessagesWindow from "./MessagesWindow/MessagesWindow";
 const Dialogs = (props) => {
     return (
         <div className={c.dialogsWrapper}>
-            <UserDialogs UserDialogs={props.UserDialogs} />
-            <MessagesWindow Messages={props.Messages} />
+            <UserDialogs UserDialogs={props.DialogsPage.dialogs} />
+            <MessagesWindow Messages={props.DialogsPage.messages} />
         </div>
     )
 }

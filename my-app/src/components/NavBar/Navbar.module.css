@@ -1,7 +1,9 @@
-.nav{
-    grid-area: n;
+.allNavBar{
     background-color:#2e2e2e;
     padding-top: 10px;
+}
+.nav{
+    grid-area: n;
 }
 .nav div a{
     display: block;
@@ -16,4 +18,9 @@
 .nav div a.active{
     background-color:#00D8FF ;
     color: aliceblue;
+}
+.friendsNavBar{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
 }

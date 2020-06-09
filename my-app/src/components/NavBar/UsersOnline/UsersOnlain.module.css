@@ -1,0 +1,41 @@
+.friendsOnlain{
+    background-color: #232A37;
+    border-radius: 8px;
+    border: 1px solid black;
+    padding: 4px 6px 4px 6px;
+}
+.headerFriendsList {
+    display: inline-block;
+    width: calc(100% + 12px);
+    text-align: center;
+    border-bottom: #000 2px solid;
+    z-index: 1;
+    color: #fff;
+}
+.friendsOnlain a{
+    color: #00D8FF;
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.friendsOnlain a:last-child{
+    margin-bottom: 0;
+}
+.itemsFriendsOnline a:hover::before{
+    content:"cd /";
+    color: red;
+}
+.userPrewiev{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userPrewiev img{
+    width: 40px;
+    border-radius: 50%;
+}
+.userName{
+    text-align: center;
+}
