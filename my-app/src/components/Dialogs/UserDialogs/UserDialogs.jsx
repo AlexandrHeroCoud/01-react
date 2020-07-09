@@ -2,7 +2,6 @@ import React from "react";
 import c from "./UserDialogs.module.css";
 
 const UserDialogs = (props) => {
-
     let dialogs = props.UserDialogs.map(d => {
         return (
             <div key={d.userId} className={c.userDialog}>

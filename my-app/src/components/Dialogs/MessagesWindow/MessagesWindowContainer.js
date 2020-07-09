@@ -3,21 +3,11 @@ import {addMessageCreator, updateNewMessageCreator} from "../../../redux/Reducer
 import MessagesWindow from "./MessagesWindow";
 import {connect} from "react-redux";
 
-// const MessagesWindowContainer = (props)=>{
-//     let updateNewMessage = (data) =>{
-//         props.dispatch(updateNewMessageCreator(data))
-//     }
-//     let addMessage = () =>{
-//         props.dispatch(addMessageCreator())
-//     }
-//     return (
-//         <MessagesWindow updateNewMessage={updateNewMessage} addMessage={addMessage} DialogsPage={props.DialogsPage} />
-//     )
-// }
 
 let mapStateToProps = (state)=>{
     return {
         DialogsPage: state.DialogsReducer.DialogsPage
+
     }
 }
 let mapDispatchToProps = (dispatch)=>{

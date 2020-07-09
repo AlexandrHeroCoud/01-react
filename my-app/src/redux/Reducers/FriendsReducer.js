@@ -85,11 +85,11 @@ const FriendsReducer = (state = stateInitDefault, action) =>{
     }
 }
 
-export const follow = (id) => ({
+export const followSuccess = (id) => ({
     type: FOLLOW,
     id: id
 })
-export const unfollow = (id) =>({
+export const unFollowSuccess = (id) =>({
     type: UNFOLLOW,
     id: id
 })
@@ -116,15 +116,45 @@ export const setToggleIsFollowing = (isFetching, userId) =>({
     userId: userId
 })
 
-// export const getUsersThunk = (dispatch) =>{
-//     this.props.setFetch(true)
-//     usersAPI.getUsers(this.props.currentPage ,this.props.pageSize).then(data =>{
-//             this.props.setUsers(data.items)
-//             this.props.setTotalUsersCount(data.totalCount)
-//             this.props.setFetch(false)
-//         }
-//     )
-// }
+export const getUsersThunkCrator = (currentPage, pageSize) =>{
+  return  (dispatch) =>{
+        dispatch(setFetch(true))
 
+        usersAPI.getUsers(currentPage ,pageSize).then(data =>{
+
+                dispatch(setFetch(false))
+
+                dispatch(setUsers(data.items))
+                dispatch(setTotalUsersCount(data.totalCount))
+
+            }
+        )
+    }
+}
+
+export const follow = (userId) =>{
+    return  (dispatch) =>{
+        dispatch(setToggleIsFollowing(true,userId))
+        usersAPI.followByUser(userId).then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(followSuccess(userId))
+                }
+                dispatch(setToggleIsFollowing(false, userId))
+            }
+        )
+    }
+}
+export const unFollow = (userId) => {
+    return (dispatch) => {
+        dispatch(setToggleIsFollowing(true, userId))
+        usersAPI.unFollowUser(userId).then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(unFollowSuccess(userId))
+                }
+                dispatch(setToggleIsFollowing(false, userId))
+            }
+        )
+    }
+}
 
 export default FriendsReducer

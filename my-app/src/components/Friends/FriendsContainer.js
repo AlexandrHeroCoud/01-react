@@ -4,47 +4,35 @@ import {
     follow,
     setCurrentPage,
     setUsers,
-    unfollow,
+    unFollow,
     setTotalUsersCount,
     setFetch,
-    setToggleIsFollowing
+    setToggleIsFollowing, getUsersThunkCrator, followSuccess, unFollowSuccess
 } from "../../redux/Reducers/FriendsReducer";
 import Friends from "./Friends";
 import Preloader from "../common/Preloader/Preloader";
-import {usersAPI} from "../../api/api";
+import {Redirect} from "react-router-dom";
 
 class FriendsClass extends React.Component{
 
     componentDidMount() {
-        this.props.setFetch(true)
-        usersAPI.getUsers(this.props.currentPage ,this.props.pageSize).then(data =>{
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.totalCount)
-            this.props.setFetch(false)
-            }
-        )
+        this.props.getUsersThunkCrator(this.props.currentPage,this.props.pageSize);
     }
     onPageChanged = (pageNum)=>{
-        this.props.setCurrentPage(pageNum)
-        this.props.setFetch(true)
-        usersAPI.getUsers(pageNum ,this.props.pageSize).then(data =>{
-                this.props.setUsers(data.items)
-            this.props.setFetch(false)
-            }
-        )
+        this.props.getUsersThunkCrator(pageNum,this.props.pageSize)
     }
     render() {
+        if(!this.props.isAuth) return <Redirect to={'/login'}/>
         return(
             <>
-                {this.props.state.isFetching ?<Preloader /> : null}
+                {this.props.isFetching ?<Preloader /> : null}
                 <Friends
                 totalUsersCount={this.props.totalUsersCount}
                 pageSize={this.props.pageSize}
                 onPageChanged={this.onPageChanged}
-                users={this.props.state.users}
+                users={this.props.users}
                 follow={this.props.follow}
-                unfollow={this.props.unfollow}
-                setToggleIsFollowing={this.props.setToggleIsFollowing}
+                unFollow={this.props.unFollow}
                 followingInProgress={this.props.followingInProgress}
             />
             </>
@@ -55,12 +43,14 @@ class FriendsClass extends React.Component{
 
 let mapStateToProps = (state)=>{
     return {
-        state: state.FriendsReducer,
+        users: state.FriendsReducer.users,
+        isFetching: state.FriendsReducer.isFetching,
         pageSize: state.FriendsReducer.pageSize,
         totalUsersCount: state.FriendsReducer.totalUsersCount,
         currentPage: state.FriendsReducer.currentPage,
-        followingInProgress: state.FriendsReducer.followingInProgress
+        followingInProgress: state.FriendsReducer.followingInProgress,
+        isAuth: state.AuthReducer.isAuth
     }
 }
 
-export default connect(mapStateToProps, {follow, unfollow,setUsers,setCurrentPage,setTotalUsersCount,setFetch, setToggleIsFollowing})(FriendsClass)
+export default connect(mapStateToProps, {follow, unFollow,setUsers,setCurrentPage,setTotalUsersCount,setFetch, setToggleIsFollowing, getUsersThunkCrator})(FriendsClass)

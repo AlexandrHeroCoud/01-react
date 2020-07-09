@@ -4,7 +4,7 @@ const instans = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     headers: {
-        'API-KEY': '95ba29c3-f0ce-4ab2-ad81-8bed9d6d86ce'
+        'API-KEY': '05f410a5-264a-4969-b817-89b37cc6cffa'
     }
 })
 
@@ -17,5 +17,13 @@ export const usersAPI = {
     },
     unFollowUser: (userId) =>{
         return instans.delete(`follow/${userId}`)
+    },
+    getUserProfileById: (userId) =>{
+        return instans.get('profile/'+userId)
     }
+}
+export const authAPI = {
+    authMe: () =>{
+        return instans.get('auth/me')
+    },
 }
