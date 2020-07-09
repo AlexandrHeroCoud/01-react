@@ -1,31 +1,30 @@
 import React from 'react';
 import c from './App.module.css';
-import Header from "./components/Header/Header";
 import Navbar from "./components/NavBar/Navbar";
-import Profile from "./components/Profile/Profile";
+import ProfileComponent from "./components/Profile/ProfileContainer";
 import Dialogs from "./components/Dialogs/Dialogs";
-import Friends from "./components/Friends/Friends"
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {BrowserRouter, Route} from "react-router-dom";
-import {addPost,updateNewPostText} from "./redux/state"
+import {Route} from "react-router-dom";
+import store from "./redux/redux-store";
+import FriendsContainer from "./components/Friends/FriendsContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
-const App = (props) => {
+
+const App = () => {
     return (
-        <BrowserRouter>
             <div className={c.appWrapper}>
-                <Header/>
-                <Navbar NavBar={props.state.NavBar}/>
+                <HeaderContainer />
+                <Navbar navBar={store.getState().SidebarReducer.NavBar}/>
                 <div className={'appWrapperContent'}>
-                    <Route path='/messages' render={() => <Dialogs DialogsPage={props.state.DialogsPage}/>}/>
-                    <Route path='/profile' render={() => <Profile newPost={updateNewPostText} addPost={addPost} ProfilePage={props.state.ProfilePage}/>}/>
-                    <Route path='/friends' render={() => <Friends />}/>
+                    <Route path='/messages' render={() => <Dialogs DialogsPage={store.getState().DialogsReducer.DialogsPage}/>}/>
+                    <Route path='/profile/:userId?' render={() => <ProfileComponent ProfilePage={store.getState().ProfileReducer}/>}/>
+                    <Route path='/friends' render={() => <FriendsContainer FriendsPage={store.getState().FriendsReducer} />}/>
                     <Route path='/music' render={() => <Music />}/>
                     <Route path='/settings' render={() => <Settings />}/>
                 </div>
             </div>
-        </BrowserRouter>
     );
 }
 export default App;

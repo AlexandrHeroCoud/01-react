@@ -6,3 +6,21 @@
     width: auto;
     height: 100%;
 }
+.login{
+    display: inline-block;
+    float:right;
+}
+.login a{
+    display: block;
+    color: #00D8FF;
+    text-decoration: none;
+    padding: 2px 5px 2px 10px;
+}
+.login a:hover::before{
+    content:"cd /";
+    color: red;
+}
+.login a.active{
+    background-color:#00D8FF ;
+    color: aliceblue;
+}

@@ -1,14 +1,14 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import c from './Navbar.module.css';
-import FriendsOnlain from './UsersOnline/UsersOnlain'
+import FriendsOnlain from './FriendsOnline/FriendsOnline'
 const Navbar = (props) =>{
     return(
         <div className={c.allNavBar}>
         <nav className={c.nav}>
-            {props.NavBar.NavBarLinks.map(l =>{
+            {props.navBar.NavBarLinks.map(l =>{
                 return (
-                    <div>
+                    <div key={l.linkId}>
                         <NavLink to={l.link} activeClassName={c.active}>
                             {l.text}
                         </NavLink>
@@ -17,7 +17,7 @@ const Navbar = (props) =>{
             })}
         </nav>
             <div className={c.friendsNavBar}>
-                <FriendsOnlain usersIsOnlain={props.NavBar.FriendsIsOnline}/>
+                <FriendsOnlain usersIsOnlain={props.navBar.FriendsIsOnline}/>
             </div>
         </div>
     )

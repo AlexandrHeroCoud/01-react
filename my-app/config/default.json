@@ -1,0 +1,4 @@
+{
+  "port": 5000,
+  "mongoUri": "mongodb+srv://dbMyAppUser:React1234@myapp-ottop.azure.mongodb.net/<dbname>?retryWrites=true&w=majority"
+}

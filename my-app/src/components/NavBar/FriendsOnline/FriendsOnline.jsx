@@ -1,8 +1,8 @@
 import React from "react";
 
-import c from "./UsersOnlain.module.css"
+import c from "./FriendsOnline.module.css"
 
-let UsersOnlain = (props) => {
+let FriendsOnline = (props) => {
     return (
         <div className={c.friendsOnlain}>
             <a href={"/allFriendsOnline"}>
@@ -11,7 +11,7 @@ let UsersOnlain = (props) => {
             <div className={c.itemsFriendsOnline}>
                 {props.usersIsOnlain.map(d => {
                     return (
-                        <a href={`user/profile/${d.userId}`} className={c.userOnline}>
+                        <a key={d.userId} href={`user/profile/${d.userId}`} className={c.userOnline}>
                             <div className={c.userPrewiev}>
                                 <img src={d.userPreviewUrl} alt=""/>
                             </div>
@@ -27,4 +27,4 @@ let UsersOnlain = (props) => {
         </div>
     )
 }
-export default UsersOnlain
+export default FriendsOnline

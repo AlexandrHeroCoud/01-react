@@ -1,10 +1,17 @@
 import React from "react";
 import c from "./MessagesWindow.module.css"
-
 const MessagesWindow = (props) =>{
-    let messagesElems = props.Messages.map(m => {
+    let updateNewMessage = () =>{
+        let data = messageContent.current.value
+        props.updateNewMessage(data)
+    }
+    let addMessage = () => {
+        props.addMessage()
+    }
+    const messageContent = React.createRef()
+    let messagesElems = props.DialogsPage.messages.map(m => {
         return (
-            <div key={m.idnpm} className={c.message}>
+            <div key={m.id} className={c.message}>
                 <div className={c.messageContent}>
                     {m.content}
                 </div>
@@ -21,8 +28,8 @@ const MessagesWindow = (props) =>{
                 {messagesElems}
             </div>
             <div className={c.messageInput}>
-                <textarea placeholder="Write your message.."/>
-                <div className={c.buttonWrapper}><button>Send</button></div>
+                <textarea ref={messageContent} onChange={updateNewMessage} value={props.DialogsPage.newMessage.content} placeholder="Write your message.."/>
+                <div className={c.buttonWrapper}><button onClick={addMessage} type={'button'}>Send</button></div>
             </div>
         </div>
     )
