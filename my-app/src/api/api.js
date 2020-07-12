@@ -19,11 +19,31 @@ export const usersAPI = {
         return instans.delete(`follow/${userId}`)
     },
     getUserProfileById: (userId) =>{
+        console.warn('Method is obsolete!!! Please use method from profileAPI!')
+        return profileAPI.getUserProfileById(userId)
+    }
+}
+export const profileAPI = {
+    getUserProfileById: (userId) =>{
         return instans.get('profile/'+userId)
+    },
+    getUserStatusById: (userId) => {
+        return instans.get('profile/status/'+userId)
+    },
+    updateUserStatusById:(status) =>{
+        return instans.put('profile/status/', {
+            status
+        })
     }
 }
 export const authAPI = {
     authMe: () =>{
         return instans.get('auth/me')
     },
+    logIn(email, password, rememberMe = false){
+        return instans.post(`auth/login`, {email, password, rememberMe})
+    },
+    logOut() {
+        return instans.delete('auth/login')
+    }
 }

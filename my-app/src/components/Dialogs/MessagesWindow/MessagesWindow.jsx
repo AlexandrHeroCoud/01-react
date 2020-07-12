@@ -1,14 +1,15 @@
 import React from "react";
 import c from "./MessagesWindow.module.css"
+import MessageReduxForm from "./MessageForm";
 const MessagesWindow = (props) =>{
-    let updateNewMessage = () =>{
-        let data = messageContent.current.value
-        props.updateNewMessage(data)
-    }
-    let addMessage = () => {
-        props.addMessage()
-    }
-    const messageContent = React.createRef()
+    // let updateNewMessage = () =>{
+    //     let data = messageContent.current.value
+    //     props.updateNewMessage(data)
+    // }
+    // let addMessage = () => {
+    //     props.addMessage()
+    // }
+    //const messageContent = React.createRef()
     let messagesElems = props.DialogsPage.messages.map(m => {
         return (
             <div key={m.id} className={c.message}>
@@ -27,10 +28,7 @@ const MessagesWindow = (props) =>{
             <div className={''}>
                 {messagesElems}
             </div>
-            <div className={c.messageInput}>
-                <textarea ref={messageContent} onChange={updateNewMessage} value={props.DialogsPage.newMessage.content} placeholder="Write your message.."/>
-                <div className={c.buttonWrapper}><button onClick={addMessage} type={'button'}>Send</button></div>
-            </div>
+            <MessageReduxForm />
         </div>
     )
 }

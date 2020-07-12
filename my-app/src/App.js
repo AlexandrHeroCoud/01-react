@@ -10,23 +10,31 @@ import {Route} from "react-router-dom";
 import store from "./redux/redux-store";
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import {connect} from "react-redux";
+import {getUserDataAuth} from "./redux/Reducers/AuthReducer";
 
 
+class App extends React.Component {
+    componentDidMount() {
+        this.props.getUserDataAuth()
+    }
 
-const App = () => {
-    return (
+    render() {
+        return (
             <div className={c.appWrapper}>
-                <HeaderContainer />
+                <HeaderContainer/>
                 <Navbar navBar={store.getState().SidebarReducer.NavBar}/>
                 <div className={'appWrapperContent'}>
-                    <Route path='/messages' render={() => <DialogsContainer DialogsPage={store.getState().DialogsReducer.DialogsPage}/>}/>
-                    <Route path='/profile/:userId?' render={() => <ProfileComponent ProfilePage={store.getState().ProfileReducer}/>}/>
-                    <Route path='/friends' render={() => <FriendsContainer FriendsPage={store.getState().FriendsReducer} />}/>
-                    <Route path='/music' render={() => <Music />}/>
-                    <Route path='/settings' render={() => <Settings />}/>
-                    <Route path='/login' render={()=><Login />}/>
+                    <Route path='/messages' render={() => <DialogsContainer/>}/>
+                    <Route path='/profile/:userId?' render={() => <ProfileComponent />}/>
+                    <Route path='/friends' render={() => <FriendsContainer />}/>
+                    <Route path='/music' render={() => <Music/>}/>
+                    <Route path='/settings' render={() => <Settings/>}/>
+                    <Route path='/login' render={() => <Login/>}/>
                 </div>
             </div>
-    );
+        );
+    }
 }
-export default App;
+
+export default connect(null, {getUserDataAuth})(App);

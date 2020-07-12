@@ -87,8 +87,9 @@ export  const updateNewMessageCreator = (data) => ({
     type: NEW_MESSAGE,
     data: data
 })
-export const addMessageCreator = () =>({
-    type: ADD_MESSAGE
+export const addMessageCreator = (data) =>({
+    type: ADD_MESSAGE,
+    data: data
 })
 
 export default DialogsReducer

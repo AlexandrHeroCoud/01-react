@@ -4,6 +4,8 @@ import UserDialogs from "./UserDialogs/UserDialogs";
 import MessagesWindowContainer from "./MessagesWindow/MessagesWindowContainer";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
+import withAuthRedirect from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 class DialogsContainer extends React.Component {
 
@@ -12,7 +14,7 @@ class DialogsContainer extends React.Component {
     }
 
     render(){
-        if(!this.props.isAuth) return <Redirect to={'/login'}/>
+
         return (
             <div className={c.dialogsWrapper}>
                 <UserDialogs UserDialogs={this.props.DialogsPage.dialogs} />
@@ -23,7 +25,10 @@ class DialogsContainer extends React.Component {
 }
 let mapStateToProps = (state) => ({
     DialogsPage: state.DialogsReducer.DialogsPage,
-    isAuth: state.AuthReducer.isAuth
 })
 
-export default connect(mapStateToProps, {})(DialogsContainer)
+
+export default compose(
+    connect(mapStateToProps, {}),
+    withAuthRedirect
+) (DialogsContainer)

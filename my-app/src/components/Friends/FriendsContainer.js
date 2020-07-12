@@ -7,11 +7,12 @@ import {
     unFollow,
     setTotalUsersCount,
     setFetch,
-    setToggleIsFollowing, getUsersThunkCrator, followSuccess, unFollowSuccess
+    setToggleIsFollowing, getUsersThunkCrator,
 } from "../../redux/Reducers/FriendsReducer";
 import Friends from "./Friends";
 import Preloader from "../common/Preloader/Preloader";
-import {Redirect} from "react-router-dom";
+import withAuthRedirect from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 class FriendsClass extends React.Component{
 
@@ -22,7 +23,6 @@ class FriendsClass extends React.Component{
         this.props.getUsersThunkCrator(pageNum,this.props.pageSize)
     }
     render() {
-        if(!this.props.isAuth) return <Redirect to={'/login'}/>
         return(
             <>
                 {this.props.isFetching ?<Preloader /> : null}
@@ -41,6 +41,7 @@ class FriendsClass extends React.Component{
 }
 
 
+
 let mapStateToProps = (state)=>{
     return {
         users: state.FriendsReducer.users,
@@ -49,8 +50,10 @@ let mapStateToProps = (state)=>{
         totalUsersCount: state.FriendsReducer.totalUsersCount,
         currentPage: state.FriendsReducer.currentPage,
         followingInProgress: state.FriendsReducer.followingInProgress,
-        isAuth: state.AuthReducer.isAuth
     }
 }
 
-export default connect(mapStateToProps, {follow, unFollow,setUsers,setCurrentPage,setTotalUsersCount,setFetch, setToggleIsFollowing, getUsersThunkCrator})(FriendsClass)
+export default compose(
+    connect(mapStateToProps, {follow, unFollow,setUsers,setCurrentPage,setTotalUsersCount,setFetch, setToggleIsFollowing, getUsersThunkCrator}),
+    withAuthRedirect,
+)(FriendsClass)

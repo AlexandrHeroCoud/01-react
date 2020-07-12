@@ -1,5 +1,6 @@
 import c from "../Profile.module.css";
 import React from "react";
+import ProfileStatus from "./ProfileStatus";
 const UserINfo = (props)=> {
 
     return(
@@ -16,6 +17,7 @@ const UserINfo = (props)=> {
                     <div>{props.profileInfo.lookingForAJob}</div>
                     <div>{props.profileInfo.lookingForAJobDescription}</div>
                 </div>
+                <ProfileStatus updateStatus={props.updateStatus} status={props.status}/>
             </div>
         </>
         )

@@ -20,8 +20,10 @@ let Friends = (props) => {
                                          src="https://ak.picdn.net/shutterstock/videos/1010240093/thumb/1.jpg"/>}
                             </NavLink>
                         </div>
+
                         <div>{item.name}</div>
                         <div>{item.followed}</div>
+
                         {item.followed ? <button type={'button'}
                                                  disabled={props.followingInProgress.some(id => id === item.id)}
                                                  onClick={() => {

@@ -7,7 +7,6 @@ import {connect} from "react-redux";
 let mapStateToProps = (state)=>{
     return {
         DialogsPage: state.DialogsReducer.DialogsPage
-
     }
 }
 let mapDispatchToProps = (dispatch)=>{
@@ -21,6 +20,8 @@ let mapDispatchToProps = (dispatch)=>{
         }
     }
 }
+
+
 
 const MessagesWindowContainer = connect(mapStateToProps, mapDispatchToProps) (MessagesWindow);
 export default MessagesWindowContainer
