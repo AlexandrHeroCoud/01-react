@@ -23,6 +23,7 @@ export const usersAPI = {
         return profileAPI.getUserProfileById(userId)
     }
 }
+
 export const profileAPI = {
     getUserProfileById: (userId) =>{
         return instans.get('profile/'+userId)
@@ -36,6 +37,7 @@ export const profileAPI = {
         })
     }
 }
+
 export const authAPI = {
     authMe: () =>{
         return instans.get('auth/me')

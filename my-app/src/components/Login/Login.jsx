@@ -13,7 +13,6 @@ const Login = (props) =>{
     }
     const onSubmit = (formData) =>{
         props.logIn(formData.Login, formData.Password, formData.RememberMe)
-        console.log('OnSubmit:', formData)
     }
     return(
         <div>

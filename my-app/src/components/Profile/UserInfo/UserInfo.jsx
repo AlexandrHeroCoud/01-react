@@ -1,8 +1,7 @@
 import c from "../Profile.module.css";
 import React from "react";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 const UserINfo = (props)=> {
-
     return(
         <>
             <img src={props.profileInfo.photos.large? props.profileInfo.photos.large : 'https://thumbs.gfycat.com/DampWanCrayfish-size_restricted.gif'} alt=""/>
@@ -17,7 +16,7 @@ const UserINfo = (props)=> {
                     <div>{props.profileInfo.lookingForAJob}</div>
                     <div>{props.profileInfo.lookingForAJobDescription}</div>
                 </div>
-                <ProfileStatus updateStatus={props.updateStatus} status={props.status}/>
+                <ProfileStatusWithHooks updateStatus={props.updateStatus} status={props.status}/>
             </div>
         </>
         )

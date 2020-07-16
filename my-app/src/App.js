@@ -11,15 +11,20 @@ import store from "./redux/redux-store";
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect} from "react-redux";
-import {getUserDataAuth} from "./redux/Reducers/AuthReducer";
+import {initializeApp} from "./redux/Reducers/AppReducer";
+import Preloader from "./components/common/Preloader/Preloader";
+
 
 
 class App extends React.Component {
     componentDidMount() {
-        this.props.getUserDataAuth()
+        this.props.initializeApp()
     }
-
     render() {
+        if (!this.props.initialized){
+            return <Preloader/>
+        }
+
         return (
             <div className={c.appWrapper}>
                 <HeaderContainer/>
@@ -37,4 +42,8 @@ class App extends React.Component {
     }
 }
 
-export default connect(null, {getUserDataAuth})(App);
+const mapStateToProps = (state) => ({
+    initialized: state.app.initialized
+})
+
+export default connect(mapStateToProps, {initializeApp})(App);

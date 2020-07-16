@@ -89,18 +89,22 @@ export const followSuccess = (id) => ({
     type: FOLLOW,
     id: id
 })
+
 export const unFollowSuccess = (id) =>({
     type: UNFOLLOW,
     id: id
 })
+
 export const setUsers = (users) =>({
     type:SET_USERS,
     users: users
 })
+
 export const setCurrentPage = (currentPage) =>({
   type: SET_CURRENT_PAGE,
   currentPage: currentPage
 })
+
 export const setTotalUsersCount = (resp) =>({
     type: SET_TOTAL_USERS_COUNT,
     respTotalUsersCount: resp
@@ -110,6 +114,7 @@ export const setFetch = (isFetching)=>({
     type: IS_FETCH,
     isFetching: isFetching
 })
+
 export const setToggleIsFollowing = (isFetching, userId) =>({
     type: TOGGLE_IS_FOLLOWING_PROGRESS,
     isFetching: isFetching,
@@ -144,6 +149,7 @@ export const follow = (userId) =>{
         )
     }
 }
+
 export const unFollow = (userId) => {
     return (dispatch) => {
         dispatch(setToggleIsFollowing(true, userId))

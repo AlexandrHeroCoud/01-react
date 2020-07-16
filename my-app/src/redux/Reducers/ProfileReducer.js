@@ -9,7 +9,7 @@ const UPDATE_USER_STATUS = 'UPDATE_USER_STATUS'
 
 let stateInitDefault = {
         profileInfo:{
-            userId: 9139,
+            userId: null,
             photos: {
                 small: "https://beztabu.net/uploads/770x433_DIR/media_news/2018/08/5b87da423bd60879544270.jpg",
                 large: "https://xakep.ru/wp-content/uploads/2018/01/151212/zahod-h.jpg"
@@ -38,7 +38,7 @@ let stateInitDefault = {
             ],
             newPostText: {id: null, header: "", content: "", time: ""}
         },
-        userStatus: 'testStatus',
+        userStatus: '',
 }
 
 const ProfileReducer = (state = stateInitDefault, action) =>{
@@ -105,10 +105,9 @@ export const getUserStatus = (userId) =>{
 }
 export const updateUserStatus = (status) =>{
     return (dispatch) =>{
-        dispatch(setUserStatus(status))
         profileAPI.updateUserStatusById(status).then(response => {
             dispatch(setUserStatus(status))
-        })
+        }).catch(err=>alert(err))
     }
 }
 

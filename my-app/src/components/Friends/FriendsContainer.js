@@ -13,6 +13,13 @@ import Friends from "./Friends";
 import Preloader from "../common/Preloader/Preloader";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {
+    getCurrentPage, getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers
+} from "../../redux/Selectors/UsersSelectors";
 
 class FriendsClass extends React.Component{
 
@@ -44,16 +51,16 @@ class FriendsClass extends React.Component{
 
 let mapStateToProps = (state)=>{
     return {
-        users: state.FriendsReducer.users,
-        isFetching: state.FriendsReducer.isFetching,
-        pageSize: state.FriendsReducer.pageSize,
-        totalUsersCount: state.FriendsReducer.totalUsersCount,
-        currentPage: state.FriendsReducer.currentPage,
-        followingInProgress: state.FriendsReducer.followingInProgress,
+        users: getUsers(state),
+        isFetching: getIsFetching(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        followingInProgress: getFollowingInProgress(state),
     }
 }
 
 export default compose(
     connect(mapStateToProps, {follow, unFollow,setUsers,setCurrentPage,setTotalUsersCount,setFetch, setToggleIsFollowing, getUsersThunkCrator}),
-    withAuthRedirect,
+    //withAuthRedirect,
 )(FriendsClass)
