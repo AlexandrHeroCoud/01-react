@@ -1,6 +1,6 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../common/FormsControls/FormsControls";
+import {createField, Input} from "../common/FormsControls/FormsControls";
 import {requiredField} from "../../utils/validators/validator";
 import {connect} from "react-redux";
 import {logIn} from "../../redux/Reducers/AuthReducer";
@@ -25,15 +25,9 @@ const Login = (props) =>{
 const LoginForm = (props) =>{
     return(
         <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field placeholder={'Login'} name={"Login"} component={Input} validate={[requiredField]} type={"email"}/>
-            </div>
-            <div>
-                <Field placeholder={'Password'} name={"Password"} component={Input} validate={[requiredField]} type={"password"}/>
-            </div>
-            <div>
-                <Field component={Input} name={"RememberMe"} type={"checkbox"}/> <span>Remember me.</span>
-            </div>
+            {createField(Input, [requiredField], 'Login', 'Login', 'email')}
+            {createField(Input, [requiredField], 'Password', 'Password', 'password')}
+            {createField(Input, [], 'RememberMe', 'Login', 'checkbox')}
             {props.error &&<div className={c.formServerError}>
                 {props.error}
             </div>}

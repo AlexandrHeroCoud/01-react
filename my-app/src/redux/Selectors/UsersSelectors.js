@@ -16,6 +16,11 @@ export const getIsFetching = (state) =>{
 export const getTotalUsersCount =(state) =>{
     return state.FriendsReducer.totalUsersCount
 }
+/**
+* @function getCurrentPage() Return number current page
+* @param {Object} state
+* @return {Number}
+*/
 export const getCurrentPage =(state) =>{
     return state.FriendsReducer.currentPage
 }

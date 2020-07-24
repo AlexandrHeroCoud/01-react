@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+.container {
+    font-family: 'Ubuntu';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+.Terminal {
+    box-shadow: 2px 4px 10px rgba(0,0,0,.5);
+}
+
+.TerminalToolbar {
+    background: rgba(37, 43, 55, 0.95);
+    width: 100%;
+    padding: 0 8px;
+    box-sizing: border-box;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.ToolbarButtons {
+    display: flex;
+    align-items: center;
+}
+
+.ToolbarButton {
+    width: 12px;
+    height: 12px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    padding: 0;
+    font-size: 7px;
+    background: linear-gradient(#7d7871 0%, #595953 100%);
+    text-shadow: 0px 1px 0px rgba(255,255,255,0.2);
+    box-shadow: 0px 0px 1px 0px #41403A,0px 1px 1px 0px #474642;
+    border: none;
+    margin-right: 4px;
+
+}
+.ToolbarButton:hover {
+    cursor: pointer;
+}
+.ToolbarButtonExit {
+    background: #f25d2b;
+    background: linear-gradient(#f37458 0%, #de4c12 100%);
+    background-clip: padding-box;
+}
+.ToolbarButton:focus {
+    outline: none;
+}
+
+.ToolbarUser {
+    width: 100%;
+    text-align: center;
+    vertical-align: center;
+    color: #d5d0ce;
+    margin-left: 4px;
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 1px;
+}
+.ToolbarUser p {
+    display: block;
+    margin: 0 auto;
+}
+.TerminalBody {
+    background: rgba(37, 43, 55, 0.95);
+    height: calc(100% - 25px);
+    margin-top: -1px;
+    padding: 2px 30px 2px 30px;
+    font-family: 'Ubuntu mono';
+}
+.TerminalText {
+    color: #ddd;
+}
+
+.TerminalPrompt {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+.PromptUser {
+    color: #87d441;
+}
+.PromptLocation {
+    color: #6d85a9;
+}
+.PromptDollar {
+    color: #ddd;
+}
+.PromptCursor {
+    height: 17px;
+    width: 8px;
+    background: white;
+    display: block;
+    margin-left: 8px;
+    animation: 2000ms ease infinite alternate blink;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

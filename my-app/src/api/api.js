@@ -35,6 +35,17 @@ export const profileAPI = {
         return instans.put('profile/status/', {
             status
         })
+    },
+    setUserPhoto:(photo) =>{
+        const formData = new FormData();
+        formData.append("image", photo)
+        return instans.put('profile/photo',formData, {
+            'Content-type': 'multipart/form-data'
+        })
+    },
+    setUserProfile:(profileInfo) =>{
+        debugger
+        return instans.put('profile/',profileInfo)
     }
 }
 

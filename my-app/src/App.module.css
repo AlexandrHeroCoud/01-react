@@ -1,6 +1,5 @@
 body{
   background-color: #616161;
-  padding: 10px
 }
 .appWrapper{
   display: grid;
@@ -12,6 +11,13 @@ body{
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
   color: #00D8FF;
+  margin: 10px;
+}
+.appContent{
+  background-color: rgb(46, 46, 46);
+}
+.appWrapperContent{
+  background-color: rgb(46, 46, 46) !important;
 }
 ::-webkit-scrollbar { width: 4px; height: 1px;}
 ::-webkit-scrollbar-button {  background-color: #616161; }
@@ -20,3 +26,5 @@ body{
 ::-webkit-scrollbar-thumb { height: 1px; background-color: #00D8FF; border-radius: 3px;}
 ::-webkit-scrollbar-corner { background-color: #999;}
 ::-webkit-resizer { background-color: #616161;}
+
+/*rgb(0, 216, 255);*/

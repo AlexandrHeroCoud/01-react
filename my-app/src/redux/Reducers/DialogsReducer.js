@@ -83,10 +83,19 @@ const DialogsReducer = (state = stateInitDefault, action) =>{
 
 }
 
+/**
+ * updateNewMessageCreator
+ * is ActionCreator
+ * */
 export  const updateNewMessageCreator = (data) => ({
     type: NEW_MESSAGE,
     data: data
 })
+
+/**
+ * addMessageCreator
+ * is ActionCreator
+ * */
 export const addMessageCreator = (data) =>({
     type: ADD_MESSAGE,
     data: data

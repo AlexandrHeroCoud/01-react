@@ -14,11 +14,15 @@ const AppReducer = (state = initialState, action) =>{
     }
 }
 
-
+/** setInitialApp
+ *  is ActionCreator
+ */
 const setInitialApp = () => ({
     type: SET_INITIAL_APP
 })
-
+/** initializeApp
+ *  is Thunk
+ */
 export const initializeApp = () => (dispatch)=>{
     let promise = dispatch(getUserDataAuth())
     Promise.all([promise]).then(()=>{

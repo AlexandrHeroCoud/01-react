@@ -11,7 +11,6 @@ import {
 } from "../../redux/Reducers/FriendsReducer";
 import Friends from "./Friends";
 import Preloader from "../common/Preloader/Preloader";
-import withAuthRedirect from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {
     getCurrentPage, getFollowingInProgress,
@@ -20,13 +19,14 @@ import {
     getTotalUsersCount,
     getUsers
 } from "../../redux/Selectors/UsersSelectors";
+import withAuthRedirect from "../../hoc/withAuthRedirect";
 
 class FriendsClass extends React.Component{
 
     componentDidMount() {
         this.props.getUsersThunkCrator(this.props.currentPage,this.props.pageSize);
     }
-    onPageChanged = (pageNum)=>{
+    onPageChanged = ({},pageNum)=>{
         this.props.getUsersThunkCrator(pageNum,this.props.pageSize)
     }
     render() {
@@ -62,5 +62,5 @@ let mapStateToProps = (state)=>{
 
 export default compose(
     connect(mapStateToProps, {follow, unFollow,setUsers,setCurrentPage,setTotalUsersCount,setFetch, setToggleIsFollowing, getUsersThunkCrator}),
-    //withAuthRedirect,
+    withAuthRedirect,
 )(FriendsClass)

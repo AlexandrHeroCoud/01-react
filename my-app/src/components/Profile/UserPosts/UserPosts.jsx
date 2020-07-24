@@ -17,7 +17,6 @@ class UserPosts extends React.Component {
     // }
 
     render() {
-        console.log("UserPosts")
         let posts = this.props.UserPosts.map(p => {
             return (
                 <div key={p.id}>

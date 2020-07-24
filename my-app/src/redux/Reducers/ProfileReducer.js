@@ -2,20 +2,23 @@ import {profileAPI, usersAPI} from "../../api/api";
 
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const ADD_POST = "ADD-POST";
-const SET_USER_PROFILE = "SET-USER-PROFILE"
-const SET_USER_STATUS = 'SET_USER_STATUS'
-const UPDATE_USER_STATUS = 'UPDATE_USER_STATUS'
-
-
+const SET_USER_PROFILE = "SET-USER-PROFILE";
+const SET_USER_STATUS = 'SET_USER_STATUS';
+const UPDATE_USER_STATUS = 'UPDATE_USER_STATUS';
+const SET_USER_PHOTO = 'SET_USER_PHOTO';
+const SET_IS_OWNER = 'SET_IS_OWNER';
+const SET_COMMENT_AVATAR = 'SET_COMMENT_AVATAR'
 let stateInitDefault = {
         profileInfo:{
             userId: null,
             photos: {
-                small: "https://beztabu.net/uploads/770x433_DIR/media_news/2018/08/5b87da423bd60879544270.jpg",
-                large: "https://xakep.ru/wp-content/uploads/2018/01/151212/zahod-h.jpg"
+                small: null,
+                large: null
+                // small: "https://beztabu.net/uploads/770x433_DIR/media_news/2018/08/5b87da423bd60879544270.jpg",
+                // large: "https://xakep.ru/wp-content/uploads/2018/01/151212/zahod-h.jpg"
             },
-            fullName: "Mr.Robot",
-            aboutMe: "fsociety",
+            fullName: null,
+            aboutMe: null,
             contacts: {
                 facebook: "facebook.com",
                 website: null,
@@ -27,7 +30,7 @@ let stateInitDefault = {
                 mainLink: null
             },
             lookingForAJob: true,
-            lookingForAJobDescription: "test",
+            lookingForAJobDescription: "",
         },
         statePost: {
             Posts: [
@@ -39,6 +42,10 @@ let stateInitDefault = {
             newPostText: {id: null, header: "", content: "", time: ""}
         },
         userStatus: '',
+        isOwner: false,
+        comments: [
+            {id: null, commentContent: null,}
+        ]
 }
 
 const ProfileReducer = (state = stateInitDefault, action) =>{
@@ -67,6 +74,19 @@ const ProfileReducer = (state = stateInitDefault, action) =>{
         case SET_USER_STATUS:{
             return {...state, userStatus: action.status}
         }
+        case SET_USER_PHOTO:{
+            return {...state, profileInfo: {...state.profileInfo, photos: action.photos} }
+        }
+        case SET_IS_OWNER:{
+            return {...state, isOwner: action.isOwner }
+        }
+        case SET_COMMENT_AVATAR:{
+            let comment = {
+                id: Math.random(),
+                commentContent: action.commentData.comment,
+            };
+            return {...state, comments: [...state.comments,comment]}
+        }
         default:
             return state
     }
@@ -87,30 +107,61 @@ const setUserStatus = (status) => ({
     type: SET_USER_STATUS,
     status: status
 })
+const setUserPhotoSuccess = (photos) =>({
+    type:SET_USER_PHOTO,
+    photos:photos,
+})
 
+const setIsOwnerSuccess = (isOwner) =>({
+    type:SET_IS_OWNER,
+    isOwner: isOwner
+})
+const setCommentAvatarSuccess = (commentData) =>({
+    type: SET_COMMENT_AVATAR,
+    commentData:  commentData
+})
 export const getUserProfile = (userId) =>{
-    return (dispatch) =>{
-        usersAPI.getUserProfileById(userId).then(response=>{
-                dispatch(setUserProfile(response.data))
-            }
-        )
+    return async (dispatch) => {
+        let response = await usersAPI.getUserProfileById(userId)
+        dispatch(setUserProfile(response.data))
     }
 }
-export const getUserStatus = (userId) =>{
-    return (dispatch) =>{
-        profileAPI.getUserStatusById(userId).then(response =>{
-            dispatch(setUserStatus(response.data))
-        })
+export const getUserStatus = (userId) => {
+    return async (dispatch) => {
+        let response = await profileAPI.getUserStatusById(userId)
+        dispatch(setUserStatus(response.data))
     }
 }
-export const updateUserStatus = (status) =>{
-    return (dispatch) =>{
+
+export const updateUserStatus = (status) => {
+    return async (dispatch) => {
         profileAPI.updateUserStatusById(status).then(response => {
             dispatch(setUserStatus(status))
-        }).catch(err=>alert(err))
+        }).catch(err => alert(err))
     }
 }
-
-
-
+export const savePhoto = (photo) => {
+    return async (dispatch) => {
+        profileAPI.setUserPhoto(photo).then(response => {
+            dispatch(setUserPhotoSuccess(response.data.data.photos))
+        }).catch(err => alert(err))
+    }
+}
+export const saveProfile = (profileInfo) => {
+    return async (dispatch) => {
+        profileAPI.setUserProfile(profileInfo).then(response => {
+            dispatch(setUserProfile(response.data.data))
+        }).catch(err => alert(err))
+    }
+}
+export const setIsOwner = (isOwner) =>{
+    return (dispatch) => {
+            dispatch(setIsOwnerSuccess(isOwner))
+    }
+}
+export const setComment = (commentData) =>{
+    return (dispatch) =>{
+        dispatch(setCommentAvatarSuccess(commentData))
+    }
+}
 export default ProfileReducer
