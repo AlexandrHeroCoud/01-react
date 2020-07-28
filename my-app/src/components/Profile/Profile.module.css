@@ -9,10 +9,5 @@
     max-width: 100%;
 }
 .UserData{
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: 150px auto;
-    grid-column-gap: 10px;
-    grid-row-gap: 40px;
-    padding-left: 10px;
+
 }

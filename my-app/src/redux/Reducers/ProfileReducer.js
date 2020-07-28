@@ -144,6 +144,7 @@ export const savePhoto = (photo) => {
     return async (dispatch) => {
         profileAPI.setUserPhoto(photo).then(response => {
             dispatch(setUserPhotoSuccess(response.data.data.photos))
+
         }).catch(err => alert(err))
     }
 }

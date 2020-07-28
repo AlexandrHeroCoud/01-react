@@ -1,7 +1,7 @@
 import React from "react";
 import c from './Profile.module.css'
 import UserPostsContainer from "./UserPosts/UserPostsContainer";
-import UserInfo from "./UserInfo/UserInfo";
+import UserInfoContainer from "./UserInfo/UserInfoContainer";
 import {
     getUserProfile,
     getUserStatus,
@@ -43,7 +43,7 @@ class ProfileContainer extends React.Component{
     render(){
         return(
             <div className={c.content}>
-                <UserInfo
+                <UserInfoContainer
                     isOwner={this.props.isOwner}
                     profileInfo={this.props.profileInfo}
                     contacts={''}

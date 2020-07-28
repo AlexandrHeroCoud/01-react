@@ -1,0 +1,20 @@
+.wrapper{
+    height: max-content;
+}
+.wrapperImage{
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.editAvatarButton{
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    text-align: center;
+    padding-bottom: 4px;
+    vertical-align: center;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.editAvatarButton:hover{
+    color: white;
+}

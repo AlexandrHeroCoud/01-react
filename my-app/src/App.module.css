@@ -1,3 +1,6 @@
+*:focus{
+  outline: none;
+}
 body{
   background-color: #616161;
 }
@@ -26,5 +29,58 @@ body{
 ::-webkit-scrollbar-thumb { height: 1px; background-color: #00D8FF; border-radius: 3px;}
 ::-webkit-scrollbar-corner { background-color: #999;}
 ::-webkit-resizer { background-color: #616161;}
-
+button{
+  background-color: #000000;
+  border-color: #1A427D;
+  color: #b3b2ad;
+  min-height: 30px;
+  min-width: 50px;
+}
+.buttonGeneral {
+  background-color: #000000;
+  border-color: #1A427D;
+  color: #b3b2ad;
+  min-height: 30px;
+  min-width: 50px;
+}
+.buttonGeneral:hover{
+  color: white;
+}
+.buttonGeneral:active{
+  border-color: #1A4250;
+}
+.buttonGeneral:focus{
+  outline: none;
+}
+.buttonGeneral:hover{
+  color: white;
+}
+.generalButtonWrapper button {
+  background-color: #000000;
+  border-color: #1A427D;
+  color: #b3b2ad;
+  min-height: 30px;
+  min-width: 50px;
+}
+.generalButtonWrapper button:hover{
+  color: white;
+}
+.generalButtonWrapper button:active{
+  border-color: #1A4250;
+}
+.generalButtonWrapper button:focus{
+  outline: none;
+}
+.generalButtonWrapper button:hover{
+  color: white;
+}
+button:active{
+  border-color: #1A4250;
+}
+button:focus{
+  outline: none;
+}
+input:focus{
+  outline: none;
+}
 /*rgb(0, 216, 255);*/

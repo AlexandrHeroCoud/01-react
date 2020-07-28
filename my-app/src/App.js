@@ -12,9 +12,9 @@ import FriendsContainer from "./components/Friends/FriendsContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/Reducers/AppReducer";
-import TEset from "./components/common/test/TEset";
+import Test from "./components/common/test/TEset";
 const Preloader = React.lazy(()=> import('./components/common/Preloader/Preloader'));
-// import MatrixFunc from "./components/common/MatrixPreloader/MatrixFunc";
+
 
 
 
@@ -39,7 +39,7 @@ class App extends React.Component {
                     <Route path='/music' render={() => <Music/>}/>
                     <Route path='/settings' render={() => <Settings/>}/>
                     <Route path='/login' render={() => <Login/>}/>
-                    <Route path='/test' render={() => <TEset/>}/>
+                    <Route path='/test' render={() => <Test/>}/>
                 </div>
             </div>
         </>

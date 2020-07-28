@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
-
+.modalCustom{
+    width: 100%;
+    max-width: none;
+}
 .container {
     font-family: 'Ubuntu';
     display: flex;
@@ -11,10 +14,12 @@
 }
 .Terminal {
     box-shadow: 2px 4px 10px rgba(0,0,0,.5);
+    max-width: 95vh;
+    max-height: 95vh;
 }
 
 .TerminalToolbar {
-    background: rgba(37, 43, 55, 0.95);
+    background: rgba(37, 43, 55, 0.80);
     width: 100%;
     padding: 0 8px;
     box-sizing: border-box;
@@ -23,13 +28,25 @@
     align-items: center;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+    border-bottom: 2px solid black;
 }
 
 .ToolbarButtons {
     display: flex;
     align-items: center;
+    width: 50px;
+    margin-left: auto;
 }
-
+.iconsMaterial{
+    width: 12px;
+    height: 12px;
+    font-size: 7px;
+    background: inherit;
+    text-shadow: 0px 1px 0px rgba(255,255,255,0.2);
+    box-shadow: 0px 0px 1px 0px #41403A,0px 1px 1px 0px #474642;
+    border: none;
+    margin-right: 4px;
+}
 .ToolbarButton {
     width: 12px;
     height: 12px;
@@ -71,14 +88,16 @@
 }
 .ToolbarUser p {
     display: block;
-    margin: 0 auto;
+    margin-left: 50px;
 }
 .TerminalBody {
-    background: rgba(37, 43, 55, 0.95);
+    background: rgba(37, 43, 55, 0.80);
     height: calc(100% - 25px);
     margin-top: -1px;
     padding: 2px 30px 2px 30px;
     font-family: 'Ubuntu mono';
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 .TerminalText {
     color: #ddd;
@@ -88,7 +107,7 @@
     margin-top: 10px;
     display: flex;
     justify-content: center;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 }
 
 .PromptUser {
