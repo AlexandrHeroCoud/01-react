@@ -26,7 +26,7 @@ const AuthReducer = (state = stateInitDefault, action) =>{
     }
 }
 
-/** setUserDataAuth
+/** @function setUserDataAuth()
  *  is ActionCreator
  */
 const setUserDataAuth = (id, email, login, isAuth) => ({
@@ -39,7 +39,7 @@ const setUserDataAuth = (id, email, login, isAuth) => ({
     }
 })
 
-/** getUserDataAuth
+/** @function getUserDataAuth()
  *  Get user data of authAPI and set them in STATE
  */
 export const getUserDataAuth = () => async (dispatch) => {
@@ -58,7 +58,6 @@ export const getUserDataAuth = () => async (dispatch) => {
  */
 export const logIn = (email, password, rememberMe) => async (dispatch) => {
     let response = await authAPI.logIn(email, password, rememberMe)
-
     if (response.data.resultCode === 0) {
         dispatch(getUserDataAuth())
     } else {
