@@ -14,17 +14,13 @@ import {connect} from "react-redux";
 import {initializeApp} from "./redux/Reducers/AppReducer";
 import Test from "./components/common/test/TEset";
 const Preloader = React.lazy(()=> import('./components/common/Preloader/Preloader'));
-
-
-
-
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp()
     }
     render() {
         if (!this.props.initialized){
-            return <Preloader />
+            return <Preloader classString={c.preloaderRoot}/>
         }
         return (
             <>

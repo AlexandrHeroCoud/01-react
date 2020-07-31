@@ -7,7 +7,9 @@ const SET_USER_STATUS = 'SET_USER_STATUS';
 const UPDATE_USER_STATUS = 'UPDATE_USER_STATUS';
 const SET_USER_PHOTO = 'SET_USER_PHOTO';
 const SET_IS_OWNER = 'SET_IS_OWNER';
-const SET_COMMENT_AVATAR = 'SET_COMMENT_AVATAR'
+const SET_COMMENT_AVATAR = 'SET_COMMENT_AVATAR';
+const SET_EDIT_MODE = 'SET_EDIT_MODE';
+
 let stateInitDefault = {
         profileInfo:{
             userId: null,
@@ -29,7 +31,7 @@ let stateInitDefault = {
                 github: "github.com",
                 mainLink: null
             },
-            lookingForAJob: true,
+            lookingForAJob: false,
             lookingForAJobDescription: "",
         },
         statePost: {
@@ -43,6 +45,7 @@ let stateInitDefault = {
         },
         userStatus: '',
         isOwner: false,
+        editMode: false,
         comments: [
             {id: null, commentContent: null,}
         ]
@@ -87,11 +90,20 @@ const ProfileReducer = (state = stateInitDefault, action) =>{
             };
             return {...state, comments: [...state.comments,comment]}
         }
+        case SET_EDIT_MODE:{
+            return {...state, editMode: action.editMode}
+        }
         default:
             return state
     }
 }
-const setUserProfile = (profile) => ({
+
+const setEditModeSuccess = (editMode) => ({
+    type:SET_EDIT_MODE,
+    editMode: editMode
+})
+
+const setUserProfileSuccess = (profile) => ({
     type: SET_USER_PROFILE,
     data: profile
 })
@@ -123,7 +135,7 @@ const setCommentAvatarSuccess = (commentData) =>({
 export const getUserProfile = (userId) =>{
     return async (dispatch) => {
         let response = await usersAPI.getUserProfileById(userId)
-        dispatch(setUserProfile(response.data))
+        dispatch(setUserProfileSuccess(response.data))
     }
 }
 export const getUserStatus = (userId) => {
@@ -135,29 +147,59 @@ export const getUserStatus = (userId) => {
 
 export const updateUserStatus = (status) => {
     return async (dispatch) => {
-        profileAPI.updateUserStatusById(status).then(response => {
-            dispatch(setUserStatus(status))
-        }).catch(err => alert(err))
+       const response = await profileAPI.updateUserStatusById(status)
+            dispatch(setUserStatus(response))
     }
 }
+
+/**
+ * @function savePhoto()
+ * @param {File} photo
+ * @return alert(error)
+ *  **/
 export const savePhoto = (photo) => {
     return async (dispatch) => {
-        profileAPI.setUserPhoto(photo).then(response => {
+        const response = await profileAPI.setUserPhoto(photo)
+        if(response.data.resultCode === 0){
             dispatch(setUserPhotoSuccess(response.data.data.photos))
-
-        }).catch(err => alert(err))
+        } else {
+            alert(response.data.message)
+        }
     }
 }
+
+/**
+ * @function saveProfile()
+ * @param {Object} profileInfo
+ * @return set state profileInfo, else alert(error)
+ *  **/
 export const saveProfile = (profileInfo) => {
     return async (dispatch) => {
-        profileAPI.setUserProfile(profileInfo).then(response => {
-            dispatch(setUserProfile(response.data.data))
-        }).catch(err => alert(err))
+       const response = await profileAPI.setUserProfile(profileInfo)
+        if(response.data.resultCode === 0){
+            dispatch(setUserProfileSuccess(profileInfo))
+            dispatch(setEditModeSuccess(false))
+        } else {
+            alert(response.data.messages)
+        }
     }
 }
+/**
+ * @function setIsOwner()
+ * @param {Boolean} isOwner
+ * **/
 export const setIsOwner = (isOwner) =>{
     return (dispatch) => {
             dispatch(setIsOwnerSuccess(isOwner))
+    }
+}
+/**
+ * @function setEditMode()
+ * @param {Boolean} editMode
+ * **/
+export const setEditMode = (editMode) =>{
+    return (dispatch) =>{
+        dispatch(setEditModeSuccess(editMode))
     }
 }
 export const setComment = (commentData) =>{

@@ -8,9 +8,7 @@ const UserInfoContainer = (props)=> {
             <AvatarContainer />
             <div className={c.UserData}>
                 {/*<ProfileStatusWithHooks updateStatus={props.updateStatus} status={props.status}/>*/}
-                <div>
                      <UserInfoIsOwner isOwner={props.isOwner} profileInfo={props.profileInfo} />
-                </div>
             </div>
         </>
         )

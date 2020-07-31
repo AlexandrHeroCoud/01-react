@@ -83,4 +83,9 @@ button:focus{
 input:focus{
   outline: none;
 }
+.preloaderRoot {
+  position: absolute;
+  width: 100vh;
+  height:100vh;
+}
 /*rgb(0, 216, 255);*/

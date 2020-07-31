@@ -6,13 +6,14 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux"
 import store from "./redux/redux-store";
 import Preloader  from"./components/common/Preloader/Preloader";
+import c from './index.module.css'
 const App =React.lazy(()=>import('./App'));
 
 
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
-            <Suspense fallback={<Preloader/>}>
+            <Suspense fallback={<Preloader classString={c.preloaderRoot}/>}>
                 <App />
             </Suspense>
         </Provider>

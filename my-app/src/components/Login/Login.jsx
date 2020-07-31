@@ -27,7 +27,7 @@ const LoginForm = (props) =>{
         <form onSubmit={props.handleSubmit}>
             {createField(Input, [requiredField], 'Login', 'Login', 'email')}
             {createField(Input, [requiredField], 'Password', 'Password', 'password')}
-            {createField(Input, [], 'RememberMe', 'Login', 'checkbox')}
+            {createField(Input, [], 'RememberMe', 'Login', 'checkbox', 'Remember me?')}
             {props.error &&<div className={c.formServerError}>
                 {props.error}
             </div>}

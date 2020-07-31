@@ -13,7 +13,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
-import UserInfoForm, {ProfileInfoReduxForm} from "./UserInfo/UserInfoForm";
+import {ProfileInfoReduxForm} from "./UserInfo/UserInfoForm";
 
 
 class ProfileContainer extends React.Component{
@@ -35,10 +35,6 @@ class ProfileContainer extends React.Component{
         if(prevProps.match.params.userId != this.props.match.params.userId){
             this.refreshProfile()
         }
-    }
-    onSubmit(formData){
-        debugger
-        saveProfile(formData)
     }
     render(){
         return(

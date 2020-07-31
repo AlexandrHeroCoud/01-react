@@ -94,7 +94,6 @@ class ImgDropAndCrop extends Component {
         this.setState({
             imageCrop: imageCrop.image
         })
-        console.log(this.state.imageCrop)
     }
     upload = () => {
         const base64FileString = this.state.imageCrop

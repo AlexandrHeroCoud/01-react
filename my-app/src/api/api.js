@@ -44,7 +44,6 @@ export const profileAPI = {
         })
     },
     setUserProfile:(profileInfo) =>{
-        debugger
         return instans.put('profile/',profileInfo)
     }
 }
